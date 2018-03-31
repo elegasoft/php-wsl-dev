@@ -13,6 +13,7 @@ wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/pro
 mv provision.sh.1 provision.sh
 chmod +x provision.sh
 sudo bash provision.sh
+sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
 ```
 
 ## Development Environment Overview
