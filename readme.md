@@ -101,3 +101,11 @@ PostgreSQL:
 
 * User: ``  homestead  ``
 * Password: ``  secret  ``
+
+### SSH Keys
+
+Share your Windows installations SSH keys with the development environment
+```sh
+sudo rm -rf /home/$USER/.ssh
+ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
+```
