@@ -22,7 +22,12 @@ Coding Languages:
 * Golang
 * PHP 7.2, 7.1, 7.0, and 5.6 (each are installed and switchable with via the command line)
 
-Node Build Tools
+PHP Framework Support:
+* Laravel (installers for Laravel, Lumen, Envoy and Spark, plus the Chrome Driver for Laravel Dusk)
+* Wordpress (via wp-cli)
+* Drupal (via drush/drush)
+
+Node Build Tools:
 
 * npm
 * yarn
@@ -48,4 +53,51 @@ Queue Managers:
 * Beanstalkd
 * Supervisor
 
+Misc:
+* nginx with fpm
+* Oh-My-Zsh (zshell)
+* MailHog
+* Postfix
+* ngrok
+* apt-fast
 
+
+## Usage
+
+### Change the runtime version of PHP
+
+Reset to PHP 7.2 (default)
+
+```sh
+update-alternatives --set php /usr/bin/php7.2
+```
+
+Change to PHP 7.1
+
+```sh
+update-alternatives --set php /usr/bin/php7.1
+```
+
+Change to PHP 7.0
+
+```sh
+update-alternatives --set php /usr/bin/php7.0
+```
+
+Change to PHP 5.6
+
+```sh
+update-alternatives --set php /usr/bin/php5.6
+```
+
+### Default Database Authentication
+
+MySQL
+
+* User: ``  root  ``
+* Password: ``  secret  ``
+
+PostgreSQL:
+
+* User: ``  homestead  ``
+* Password: ``  secret  ``
