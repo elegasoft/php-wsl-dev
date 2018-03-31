@@ -103,6 +103,7 @@ mv composer.phar /usr/local/bin/composer
 # Install Laravel Envoy & Installer
 
 sudo su $USER <<'EOF'
+/usr/local/bin/composer global require "hirak/prestissimo=~0.3"
 /usr/local/bin/composer global require "laravel/envoy=~1.0"
 /usr/local/bin/composer global require "laravel/installer=~2.0"
 /usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
@@ -442,6 +443,8 @@ apt -y upgrade
 apt -y autoremove
 apt -y clean
 chown -R $USER:$USER /home/$USER
+chmod 755 -R /home/$USER/.composer
+chmod 777 -R /home/$USER/.config
 
 # Add Composer Global Bin To Path
 
