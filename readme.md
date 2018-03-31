@@ -1,12 +1,51 @@
-# Laravel Settler
+# A PHP Ubuntu WSL Development Environment Configuration
 
-The scripts that build the Laravel Homestead development environment.
+## Introduction
 
-## Usage
+PHP Ubuntu WSL Development Environment provides you a wonderful development environment without requiring you to manually install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! If something goes wrong, you can destroy and re-create the box in minutes!
 
-You probably don't want this repo.
+Runs on Ubuntu inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.2, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
 
-* Clone [chef/bento](https://github.com/chef/bento) into same top level folder as this repo.
-* Run `./bin/copy-to-bento.sh`
-* Replace `scripts/cleanup.sh` with `scripts/homestead.sh` in file `ubuntu/ubuntu-16.04-amd64.json`
-* Follow normal [Packer](https://www.packer.io/) practice of building `ubuntu/ubuntu-16.04-amd64.json`
+## Installation
+
+```sh
+wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
+mv provision.sh.1 provision.sh
+chmod +x provision.sh
+sudo bash provision.sh
+```
+
+## Development Environment Overview
+
+Coding Languages:
+
+* Golang
+* PHP 7.2, 7.1, 7.0, and 5.6 (each are installed and switchable with via the command line)
+
+Node Build Tools
+
+* npm
+* yarn
+* gulp-cli
+* bower
+* grunt-cli
+
+Databases/Datastores:
+
+* MySQL
+* PostgreSQL
+* SQLite
+* Redis
+* Memcached
+
+Debuggers/Profilers:
+
+* Xdebug (automatically disabled from the commandline for performance)
+* Blackfire
+
+Queue Managers:
+
+* Beanstalkd
+* Supervisor
+
+
