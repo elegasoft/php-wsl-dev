@@ -70,25 +70,25 @@ Misc:
 Reset to PHP 7.2 (default)
 
 ```sh
-update-alternatives --set php /usr/bin/php7.2
+sudo update-alternatives --set php /usr/bin/php7.2
 ```
 
 Change to PHP 7.1
 
 ```sh
-update-alternatives --set php /usr/bin/php7.1
+sudo update-alternatives --set php /usr/bin/php7.1
 ```
 
 Change to PHP 7.0
 
 ```sh
-update-alternatives --set php /usr/bin/php7.0
+sudo update-alternatives --set php /usr/bin/php7.0
 ```
 
 Change to PHP 5.6
 
 ```sh
-update-alternatives --set php /usr/bin/php5.6
+sudo update-alternatives --set php /usr/bin/php5.6
 ```
 
 ### Default Database Authentication
