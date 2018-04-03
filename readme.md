@@ -8,11 +8,14 @@ Runs on Ubuntu inside the Windows Subsystem for Linux and includes the Nginx web
 
 ## Installation
 
-```sh
+To use the automatic installation script run the following command
+
+```console
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
 mv provision.sh.1 provision.sh
 chmod +x provision.sh
 sudo bash provision.sh
+
 sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
 ```
 
@@ -69,25 +72,25 @@ Misc:
 
 Reset to PHP 7.2 (default)
 
-```sh
+```console
 sudo update-alternatives --set php /usr/bin/php7.2
 ```
 
 Change to PHP 7.1
 
-```sh
+```console
 sudo update-alternatives --set php /usr/bin/php7.1
 ```
 
 Change to PHP 7.0
 
-```sh
+```console
 sudo update-alternatives --set php /usr/bin/php7.0
 ```
 
 Change to PHP 5.6
 
-```sh
+```console
 sudo update-alternatives --set php /usr/bin/php5.6
 ```
 
@@ -103,10 +106,21 @@ PostgreSQL:
 * User: ``  homestead  ``
 * Password: ``  secret  ``
 
-### SSH Keys
+### SSH Configuration
 
-Share your Windows installations SSH keys with the development environment
-```sh
+**Share your Windows installations SSH keys with the development environment**
+```console
 sudo rm -rf /home/$USER/.ssh
 ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
 ```
+
+**Logging in via SSH (via Password Authentication)**
+
+1. `` sudo apt-get purge openssh-server ``
+2. `` sudo apt-get install openssh-server ``
+3. `` sudo nano /etc/ssh/sshd_config `` and Disable privilege separation by adding or setting `` UsePrivilegeSeparation no ``
+4. Disallow root login by setting  `` PermitRootLogin no ``
+5. Add this line below the above `` AllowUsers yourusername ``
+6. `` sudo service ssh --full-restart ``
+7. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
+
