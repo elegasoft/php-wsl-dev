@@ -450,6 +450,10 @@ chmod 777 -R /home/$USER/.config
 
 printf "\nPATH=\"$(sudo su - $USER -c 'composer config -g home 2>/dev/null')/vendor/bin:\$PATH\"\n" | tee -a /home/$USER/.profile
 
+# Add Aliases to Bash Aliases
+
+wget https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases -O ->> /home/$USER/.bash_aliases
+source /home/$USER/.profile
 
 apt -y autoremove;
 apt -y clean;
