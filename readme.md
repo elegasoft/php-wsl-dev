@@ -114,13 +114,15 @@ sudo rm -rf /home/$USER/.ssh
 ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
 ```
 
-**Logging in via SSH (via Password Authentication)**
+**Configure SSH Login**
 
 1. `` sudo apt-get purge openssh-server ``
 2. `` sudo apt-get install openssh-server ``
-3. `` sudo nano /etc/ssh/sshd_config `` and Disable privilege separation by adding or setting `` UsePrivilegeSeparation no ``
-4. Disallow root login by setting  `` PermitRootLogin no ``
-5. Add this line below the above `` AllowUsers yourusername ``
-6. `` sudo service ssh --full-restart ``
-7. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
+3. `` sudo nano /etc/ssh/sshd_config `` 
+4. Disable privilege separation by adding or setting `` UsePrivilegeSeparation no ``
+5. Disallow root login by setting  `` PermitRootLogin no ``
+6. Add this line below the above `` AllowUsers yourusername ``
+7. (optional) Add this line also `` PasswordAuthentication Yes `` (allows authentication via password)
+7. `` sudo service ssh --full-restart ``
+8. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
 
