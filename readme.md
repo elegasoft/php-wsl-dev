@@ -106,15 +106,17 @@ PostgreSQL:
 * User: ``  homestead  ``
 * Password: ``  secret  ``
 
-### SSH Configuration
+## SSH Configuration
 
-**Share your Windows installations SSH keys with the development environment**
+### Share your Windows installations SSH keys with the development environment ###
+
+The following will create a symlink to your Windows Hosts .ssh folder. If your usernames are not the same be sure to change them here.
 ```console
 sudo rm -rf /home/$USER/.ssh
 ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
 ```
 
-**Configure SSH Login**
+### Configure SSH Login ###
 
 1. `` sudo apt-get purge openssh-server ``
 2. `` sudo apt-get install openssh-server ``
@@ -126,4 +128,8 @@ ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
 7. `` sudo service ssh --full-restart ``
 8. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
 
-[How to automatically start ssh server on boot on Windows Subsystem for Linux](https://gist.github.com/dentechy/de2be62b55cfd234681921d5a8b6be11) by dentechy
+Note: You will need to start the SSH Server after each login, alternatively, see [How to automatically start ssh server on boot on Windows Subsystem for Linux](https://gist.github.com/dentechy/de2be62b55cfd234681921d5a8b6be11) by dentechy for how to configure the SSH Server to start automatically with Windows.
+
+### Re/Starting the SSH Server ###
+
+If you have already configured the SSH Server and after a restart you notice that you have lost SSH connectivity run ``` ssh_restart ``` from the Bash/Ubuntu command line.
