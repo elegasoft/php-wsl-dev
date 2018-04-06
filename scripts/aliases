@@ -42,6 +42,10 @@ function php72() {
     sudo update-alternatives --set php /usr/bin/php7.2
 }
 
+function ssh-restart(){
+    sudo service ssh --full-restart
+}
+
 function serve-apache() {
     if [[ "$1" && "$2" ]]
     then
