@@ -126,3 +126,4 @@ ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
 7. `` sudo service ssh --full-restart ``
 8. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
 
+[How to automatically start ssh server on boot on Windows Subsystem for Linux](https://gist.github.com/dentechy/de2be62b55cfd234681921d5a8b6be11) by dentechy
