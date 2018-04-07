@@ -8,15 +8,20 @@ Runs on Ubuntu inside the Windows Subsystem for Linux and includes the Nginx web
 
 ## Installation
 
-To use the automatic installation script run the following command
+To use the automatic installation script run the following commands"
 
 ```console
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
 mv provision.sh.1 provision.sh
 chmod +x provision.sh
 sudo bash provision.sh
+```
 
+And then Run :
+
+```console
 sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
+sudo chown -R $USER:$(id -gn $USER) /home/$USER/.composer
 ```
 
 ## Development Environment Overview
