@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo su -c << 'EOF'
+sudo -s << 'EOF'
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -41,7 +41,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 curl -s https://packagecloud.io/gpg.key | apt-key add -
 echo "deb http://packages.blackfire.io/debian any main" | tee /etc/apt/sources.list.d/blackfire.list
 
-curl --silent --location https://deb.nodesource.com/setup_9.x | bash -
+curl --silent --location https://deb.nodesource.com/setup_9.x | bash - weoihfoeihfoehfihweiofoe iouhfwihe wfhehfiweiofhwe\iohfeiohoiwehfiofhoeihfoihfwe
 
 # Update Package Lists
 
@@ -92,17 +92,6 @@ update-alternatives --set php /usr/bin/php7.2
 
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
-
-# Install Laravel Envoy & Installer
-
-sudo su $USER <<'USER'
-/usr/local/bin/composer global require "hirak/prestissimo=~0.3"
-/usr/local/bin/composer global require "laravel/envoy=~1.0"
-/usr/local/bin/composer global require "laravel/installer=~2.0"
-/usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
-/usr/local/bin/composer global require "laravel/spark-installer=~2.0"
-/usr/local/bin/composer global require "drush/drush=~8"
-USER
 
 # Set Some PHP CLI Settings
 sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.2/cli/php.ini
@@ -426,9 +415,19 @@ chmod 777 -R /home/$USER/.config
 
 # Add Composer Global Bin To Path
 
+EOF
+
 printf "\nPATH=\"$(sudo su - $USER -c 'composer config -g home 2>/dev/null')/vendor/bin:\$PATH\"\n" | tee -a /home/$USER/.profile
 
-EOF
+# Install Laravel Envoy & Installer
+
+/usr/local/bin/composer global require "hirak/prestissimo=~0.3"
+/usr/local/bin/composer global require "laravel/envoy=~1.0"
+/usr/local/bin/composer global require "laravel/installer=~2.0"
+/usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
+/usr/local/bin/composer global require "laravel/spark-installer=~2.0"
+/usr/local/bin/composer global require "drush/drush=~8"
+
 
 wget https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases -O ->> /home/$USER/.bash_aliases
 mv /home/$USER/.bash_aliases? /home/$USER/.bash_aliases
@@ -437,3 +436,6 @@ source /home/$USER/.profile
 sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
 sudo chown -R $USER:$(id -gn $USER) /home/$USER/.composer
 
+sudo chown -R $USER:$USER /home/$USER
+chmod 755 -R /home/$USER/.composer
+chmod 777 -R /home/$USER/.config
