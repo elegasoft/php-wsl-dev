@@ -14,7 +14,7 @@ To use the automatic installation script run the following commands"
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
 mv provision.sh.1 provision.sh
 chmod +x provision.sh
-sudo bash provision.sh
+bash provision.sh
 ```
 
 And then Run :
