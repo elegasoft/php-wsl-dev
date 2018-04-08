@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo -s << EOF
+sudo su -s << 'EOF'
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -41,7 +41,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 curl -s https://packagecloud.io/gpg.key | apt-key add -
 echo "deb http://packages.blackfire.io/debian any main" | tee /etc/apt/sources.list.d/blackfire.list
 
-curl --silent --location https://deb.nodesource.com/setup_8.x | bash -
+curl --silent --location https://deb.nodesource.com/setup_9.x | bash -
 
 # Update Package Lists
 
@@ -51,7 +51,7 @@ apt update
 
 apt install -y build-essential dos2unix gcc git libmcrypt4 libpcre3-dev ntp unzip \
 make python2.7-dev python-pip re2c supervisor unattended-upgrades whois vim libnotify-bin \
-pv cifs-utils mcrypt bash-completion zsh ntpdate
+pv cifs-utils mcrypt bash-completion zsh ntpdate nodejs sqlite3 libsqlite3-dev
 
 # Set My Timezone
 
@@ -66,28 +66,19 @@ php7.2-curl php7.2-memcached \
 php7.2-imap php7.2-mysql php7.2-mbstring \
 php7.2-xml php7.2-zip php7.2-bcmath php7.2-soap \
 php7.2-intl php7.2-readline \
-php-xdebug php-pear
-
-# PHP 7.1
-apt install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+php-xdebug php-pear \
 php7.1-cli php7.1-dev \
 php7.1-pgsql php7.1-sqlite3 php7.1-gd \
 php7.1-curl php7.1-memcached \
 php7.1-imap php7.1-mysql php7.1-mbstring \
 php7.1-xml php7.1-zip php7.1-bcmath php7.1-soap \
-php7.1-intl php7.1-readline
-
-# PHP 7.0
-apt install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+php7.1-intl php7.1-readline \
 php7.0-cli php7.0-dev \
 php7.0-pgsql php7.0-sqlite3 php7.0-gd \
 php7.0-curl php7.0-memcached \
 php7.0-imap php7.0-mysql php7.0-mbstring \
 php7.0-xml php7.0-zip php7.0-bcmath php7.0-soap \
-php7.0-intl php7.0-readline
-
-# PHP 5.6
-apt install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+php7.0-intl php7.0-readline \
 php5.6-cli php5.6-dev \
 php5.6-pgsql php5.6-sqlite3 php5.6-gd \
 php5.6-curl php5.6-memcached \
@@ -104,14 +95,14 @@ mv composer.phar /usr/local/bin/composer
 
 # Install Laravel Envoy & Installer
 
-sudo su $USER <<'EOF'
+sudo su $USER <<'USER'
 /usr/local/bin/composer global require "hirak/prestissimo=~0.3"
 /usr/local/bin/composer global require "laravel/envoy=~1.0"
 /usr/local/bin/composer global require "laravel/installer=~2.0"
 /usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
 /usr/local/bin/composer global require "laravel/spark-installer=~2.0"
 /usr/local/bin/composer global require "drush/drush=~8"
-EOF
+USER
 
 # Set Some PHP CLI Settings
 sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.2/cli/php.ini
@@ -223,7 +214,7 @@ sudo phpdismod -s cli xdebug
 
 # Copy fastcgi_params to Nginx because they broke it on the PPA
 
-cat > /etc/nginx/fastcgi_params << EOF
+cat > /etc/nginx/fastcgi_params << END
 fastcgi_param	QUERY_STRING		\$query_string;
 fastcgi_param	REQUEST_METHOD		\$request_method;
 fastcgi_param	CONTENT_TYPE		\$content_type;
@@ -243,7 +234,7 @@ fastcgi_param	SERVER_PORT		\$server_port;
 fastcgi_param	SERVER_NAME		\$server_name;
 fastcgi_param	HTTPS			\$https if_not_empty;
 fastcgi_param	REDIRECT_STATUS		200;
-EOF
+END
 
 # Set The Nginx & PHP-FPM User
 
@@ -286,23 +277,18 @@ usermod -a -G www-data $USER
 id $USER
 groups $USER
 
-# Install Node
+# Install Node Build Tools
 
-apt install -y nodejs
 /usr/bin/npm install -g npm
 /usr/bin/npm install -g gulp-cli
 /usr/bin/npm install -g bower
 /usr/bin/npm install -g yarn
 /usr/bin/npm install -g grunt-cli
 
-# Install SQLite
-
-apt install -y sqlite3 libsqlite3-dev
-
-# Install MySQL
+# Install MySQL & Postgres
 echo "mysql-server mysql-server/root_password password secret" | debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password secret" | debconf-set-selections
-apt install -y mysql-server
+apt install -y mysql-server postgresql-10
 
 # Configure MySQL Password Lifetime
 
@@ -326,10 +312,6 @@ service mysql restart
 
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password=secret mysql
 
-# Install Postgres
-
-apt install -y postgresql-10
-
 # Configure Postgres Remote Access
 
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/10/main/postgresql.conf
@@ -338,9 +320,15 @@ sudo -u postgres psql -c "CREATE ROLE homestead LOGIN PASSWORD 'secret' SUPERUSE
 sudo -u postgres /usr/bin/createdb --echo --owner=homestead homestead
 service postgresql restart
 
-# Install Blackfire
-
-apt install -y blackfire-agent blackfire-php
+# Install Blackfire, The Chrome Web Driver & Dusk Utilities \
+# Memcached & Beanstalk
+apt install -y blackfire-agent blackfire-php \
+libxpm4 libxrender1 libgtk2.0-0 \
+libnss3 libgconf-2-4 chromium-browser \
+xvfb gtk2-engines-pixbuf xfonts-cyrillic \
+xfonts-100dpi xfonts-75dpi xfonts-base \
+xfonts-scalable imagemagick x11-apps \
+redis-server memcached beanstalkd
 
 # Install Zend Z-Ray (for FPM only, not CLI)
 
@@ -348,18 +336,6 @@ sudo wget http://repos.zend.com/zend-server/early-access/ZRay-Homestead/zray-sta
 sudo ln -sf /opt/zray/zray.ini /etc/php/7.2/fpm/conf.d/zray.ini
 sudo ln -sf /opt/zray/lib/zray.so /usr/lib/php/20170718/zray.so
 sudo chown -R $USER:$USER /opt/zray
-
-# Install The Chrome Web Driver & Dusk Utilities
-
-apt -y install libxpm4 libxrender1 libgtk2.0-0 \
-libnss3 libgconf-2-4 chromium-browser \
-xvfb gtk2-engines-pixbuf xfonts-cyrillic \
-xfonts-100dpi xfonts-75dpi xfonts-base \
-xfonts-scalable imagemagick x11-apps
-
-# Install Memcached & Beanstalk
-
-apt install -y redis-server memcached beanstalkd
 
 # Configure Beanstalkd
 
@@ -452,14 +428,10 @@ chmod 777 -R /home/$USER/.config
 
 printf "\nPATH=\"$(sudo su - $USER -c 'composer config -g home 2>/dev/null')/vendor/bin:\$PATH\"\n" | tee -a /home/$USER/.profile
 
-# Add Aliases to Bash Aliases
-
-apt -y autoremove;
-apt -y clean;
-
 EOF
 
 wget https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases -O ->> /home/$USER/.bash_aliases
+mv /home/$USER/.bash_aliases? /home/$USER/.bash_aliases
 source /home/$USER/.profile
 
 sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
