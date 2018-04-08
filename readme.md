@@ -1,15 +1,14 @@
-# A PHP Ubuntu WSL Development Environment Configuration
+# A PHP Ubuntu on Windows Development Environment Configuration
 
 ## Introduction
 
-PHP Ubuntu WSL Development Environment provides you a wonderful development environment without requiring you to manually install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! If something goes wrong, you can destroy and re-create the box in minutes!
+This configures a PHP Ubuntu on Windows Development Environment providing you with a wonderful development environment without requiring you to manually install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! If something goes wrong, you can destroy and re-create the box in minutes!
 
-Runs on Ubuntu inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.2, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
+Runs on Ubuntu on Windows inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.2, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
 
 ## Installation
 
-To use the automatic installation script run the following commands"
-
+From a fresh installation of Ubuntu on Windows from the Windows Store run the following installation commands from the Ubuntu terminal.
 ```console
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
 mv provision.sh.1 provision.sh
@@ -17,7 +16,7 @@ chmod +x provision.sh
 bash provision.sh
 ```
 
-That't it for installation
+After about an hour of setting up you are all set to go.
 
 ## Development Environment Overview
 
@@ -71,25 +70,25 @@ Misc:
 ### Change the runtime version of PHP
 Run any of the following from the WSL command shell:
 
-Reset to PHP 7.2 (default)
+* Reset to PHP 7.2 (default)
 
 ```console
 php72
 ```
 
-Change to PHP 7.1
+* Change to PHP 7.1
 
 ```console
 php71
 ```
 
-Change to PHP 7.0
+* Change to PHP 7.0
 
 ```console
 php70
 ```
 
-Change to PHP 5.6
+* Change to PHP 5.6
 
 ```console
 php56
@@ -134,3 +133,6 @@ Note: You will need to start the SSH Server after each login, alternatively, see
 ### Re/Starting the SSH Server ###
 
 If you have already configured the SSH Server and after a restart you notice that you have lost SSH connectivity run ``` ssh_restart ``` from the Bash/Ubuntu command line.
+
+## Using MailHog
+
