@@ -429,6 +429,15 @@ printf "\nPATH=\"$(sudo su - $USER -c 'composer config -g home 2>/dev/null')/ven
 /usr/local/bin/composer global require "drush/drush=~8"
 
 
+# Install Laravel Envoy & Installer
+
+/usr/local/bin/composer global require "hirak/prestissimo=~0.3"
+/usr/local/bin/composer global require "laravel/envoy=~1.0"
+/usr/local/bin/composer global require "laravel/installer=~2.0"
+/usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
+/usr/local/bin/composer global require "laravel/spark-installer=~2.0"
+/usr/local/bin/composer global require "drush/drush=~8"
+
 wget https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases -O ->> /home/$USER/.bash_aliases
 mv /home/$USER/.bash_aliases? /home/$USER/.bash_aliases
 source /home/$USER/.profile
