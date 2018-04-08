@@ -17,12 +17,7 @@ chmod +x provision.sh
 bash provision.sh
 ```
 
-And then Run :
-
-```console
-sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
-sudo chown -R $USER:$(id -gn $USER) /home/$USER/.composer
-```
+That't it for installation
 
 ## Development Environment Overview
 
@@ -74,29 +69,30 @@ Misc:
 ## Usage
 
 ### Change the runtime version of PHP
+Run any of the following from the WSL command shell:
 
 Reset to PHP 7.2 (default)
 
 ```console
-sudo update-alternatives --set php /usr/bin/php7.2
+php72
 ```
 
 Change to PHP 7.1
 
 ```console
-sudo update-alternatives --set php /usr/bin/php7.1
+php71
 ```
 
 Change to PHP 7.0
 
 ```console
-sudo update-alternatives --set php /usr/bin/php7.0
+php70
 ```
 
 Change to PHP 5.6
 
 ```console
-sudo update-alternatives --set php /usr/bin/php5.6
+php56
 ```
 
 ### Default Database Authentication
