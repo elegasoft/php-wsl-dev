@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo -s << EOF
+
 export DEBIAN_FRONTEND=noninteractive
 
 # Install Apt-Fast to Reduce Installation Time
@@ -452,8 +454,14 @@ printf "\nPATH=\"$(sudo su - $USER -c 'composer config -g home 2>/dev/null')/ven
 
 # Add Aliases to Bash Aliases
 
+apt -y autoremove;
+apt -y clean;
+
+EOF
+
 wget https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases -O ->> /home/$USER/.bash_aliases
 source /home/$USER/.profile
 
-apt -y autoremove;
-apt -y clean;
+sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
+sudo chown -R $USER:$(id -gn $USER) /home/$USER/.composer
+
