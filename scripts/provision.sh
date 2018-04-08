@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo su -s << 'EOF'
+sudo su -c << 'EOF'
 
 export DEBIAN_FRONTEND=noninteractive
 
