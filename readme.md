@@ -14,10 +14,15 @@ To use the automatic installation script run the following commands"
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
 mv provision.sh.1 provision.sh
 chmod +x provision.sh
-bash provision.sh
+sudo bash provision.sh
 ```
 
-That't it for installation
+And then Run :
+
+```console
+sudo chown -R $USER:$(id -gn $USER) /home/$USER/.config
+sudo chown -R $USER:$(id -gn $USER) /home/$USER/.composer
+```
 
 ## Development Environment Overview
 
@@ -69,30 +74,29 @@ Misc:
 ## Usage
 
 ### Change the runtime version of PHP
-Run any of the following from the WSL command shell:
 
 Reset to PHP 7.2 (default)
 
 ```console
-php72
+sudo update-alternatives --set php /usr/bin/php7.2
 ```
 
 Change to PHP 7.1
 
 ```console
-php71
+sudo update-alternatives --set php /usr/bin/php7.1
 ```
 
 Change to PHP 7.0
 
 ```console
-php70
+sudo update-alternatives --set php /usr/bin/php7.0
 ```
 
 Change to PHP 5.6
 
 ```console
-php56
+sudo update-alternatives --set php /usr/bin/php5.6
 ```
 
 ### Default Database Authentication
@@ -134,3 +138,25 @@ Note: You will need to start the SSH Server after each login, alternatively, see
 ### Re/Starting the SSH Server ###
 
 If you have already configured the SSH Server and after a restart you notice that you have lost SSH connectivity run ``` ssh_restart ``` from the Bash/Ubuntu command line.
+
+## Using MailHog to Test Emails
+
+Here's a sample .env configuration for Laravel
+```env
+MAIL_DRIVER=smtp
+MAIL_HOST=0.0.0.0
+MAIL_PORT=1025
+MAIL_ENCRYPTION=null
+MAIL_USER=testuser
+MAIL_PASSWORD=testpwd
+```
+
+Start the MailHog service with:
+```console
+/usr/local/bin/mailhog
+```
+
+Visit the MailHog UI in your browser at:
+```
+http://127.0.0.1:8025/
+```
