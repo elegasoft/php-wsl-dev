@@ -93,17 +93,6 @@ update-alternatives --set php /usr/bin/php7.2
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
-# Install Laravel Envoy & Installer
-
-sudo su $USER <<'USER'
-/usr/local/bin/composer global require "hirak/prestissimo=~0.3"
-/usr/local/bin/composer global require "laravel/envoy=~1.0"
-/usr/local/bin/composer global require "laravel/installer=~2.0"
-/usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
-/usr/local/bin/composer global require "laravel/spark-installer=~2.0"
-/usr/local/bin/composer global require "drush/drush=~8"
-USER
-
 # Set Some PHP CLI Settings
 sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.2/cli/php.ini
 sudo sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.2/cli/php.ini
@@ -429,6 +418,15 @@ chmod 777 -R /home/$USER/.config
 printf "\nPATH=\"$(sudo su - $USER -c 'composer config -g home 2>/dev/null')/vendor/bin:\$PATH\"\n" | tee -a /home/$USER/.profile
 
 EOF
+
+# Install Laravel Envoy & Installer
+
+/usr/local/bin/composer global require "hirak/prestissimo=~0.3"
+/usr/local/bin/composer global require "laravel/envoy=~1.0"
+/usr/local/bin/composer global require "laravel/installer=~2.0"
+/usr/local/bin/composer global require "laravel/lumen-installer=~1.0"
+/usr/local/bin/composer global require "laravel/spark-installer=~2.0"
+/usr/local/bin/composer global require "drush/drush=~8"
 
 wget https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases -O ->> /home/$USER/.bash_aliases
 mv /home/$USER/.bash_aliases? /home/$USER/.bash_aliases
