@@ -118,8 +118,8 @@ ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
 
 ### Configure SSH Login ###
 
-1. `` sudo apt-get purge openssh-server ``
-2. `` sudo apt-get install openssh-server ``
+1. `` sudo apt purge openssh-server ``
+2. `` sudo apt install openssh-server ``
 3. `` sudo nano /etc/ssh/sshd_config `` 
 4. Disable privilege separation by adding or setting `` UsePrivilegeSeparation no ``
 5. Disallow root login by setting  `` PermitRootLogin no ``
