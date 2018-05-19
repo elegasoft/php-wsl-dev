@@ -218,12 +218,11 @@ This step requires you have already completed each of the above steps under PHPS
   
 (Note: If you are still receiving unexpected errors, be sure to clear your route cache (`` php artisan route:clear ``) and config cache (`` php artisan config:clear ``) prior to running PHPUnit.)
   
-
-
-
-## WIP Services
+## Broken Packages/Services
 
 * Laravel Valet -- This currently does not work because Windows manages the proxy/networking service and does not hand off the responsibility to Linux.
 
 * Mailhog -- When starting the service I have received several errors which have yet to be resolved. While was working in my initial testing since the installation of the Windows 10 April 2018 update it is no longer working.
+
+* PostgreSql -- There seems to be an intermitten issue where users are unable to connect to the Postgres database. Further investigation is necessary.
 
