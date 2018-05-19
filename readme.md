@@ -82,9 +82,8 @@ Misc:
 
 ### Viewing a website in your browser ###
 
-Using the Ubuntu on Windows command shell, navigate to your current project's root folder and enter `` php artisan serve `` or `` art serve `` and by default the website should be available at [http://localhost:8000](http://localhost:8000). 
-
-If you would like ot change the port from 8000 to another port such as 8888 you can do so as follows: `` php artisan serve -p 8888 `` or `` art serve -p 8888 ``.
+* For a default PHP project use `` php -S localhost:8000 ``
+* For a Laravel project use `` php artisan serve `` or `` art serve `` by default the website should be available at [http://localhost:8000](http://localhost:8000).  If you would like ot change the port from 8000 to another port such as 8888 you can do so as follows: `` php artisan serve -p 8888 `` or `` art serve -p 8888 ``.
 
 ### Default Database Authentication
 
