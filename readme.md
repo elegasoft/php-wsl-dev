@@ -13,7 +13,7 @@ From a fresh installation of Ubuntu on Windows from the Windows Store run the fo
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
 mv provision.sh.1 provision.sh
 chmod +x provision.sh
-bash provision.sh
+sudo bash provision.sh
 ```
 
 After about an hour of setting up you are all set to go.
@@ -98,7 +98,7 @@ php56
 
 MySQL
 
-* User: ``  root  ``
+* User: ``  homestead  ``
 * Password: ``  secret  ``
 
 PostgreSQL:
