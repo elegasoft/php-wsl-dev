@@ -4,13 +4,13 @@
 
 This configures a PHP Ubuntu on Windows Development Environment providing you with a wonderful development environment without requiring you to manually install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! If something goes wrong, you can destroy and re-create the setup with a few simple commands!
 
-Runs on Ubuntu on Windows inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.2, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
-
-This will run the Laravel Homestead provision script on your WSL installation and apply several tweaks for use with Ubuntu on Windows.
+The development environment runs on Ubuntu on Windows inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.2, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
 
 ## Installation
 
 For best results start with a fresh installation of Ubuntu 16.04 on Windows with a username of `` vagrant ``.  From a fresh installation of Ubuntu on Windows from the Windows Store run the following installation commands from the Ubuntu terminal.
+
+This installation script runs the Laravel Homestead provision script on your Ubuntu on Windows installation and applies several tweaks for use with Ubuntu on Windows.
 
 ```console
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
@@ -20,6 +20,16 @@ sudo bash provision.sh
 ```
 
 After about an hour of setting up you are all set to go.
+
+### Alias Configuration
+
+If the installation does not successfully link the aliases which the rest of this guide may reference, please run the following commands in the Ubuntu on Windows shell.
+
+```console
+rm /home/$USER/.bash_aliases
+wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases" -O ->> /home/$USER/.bash_aliases
+source /home/$USER/.profile
+```
 
 ## Development Environment Overview
 
@@ -191,7 +201,7 @@ This step requires you have already completed each of the above steps under PHPS
 
 1. Navigate to `` File >> Settings >> Languages & Frameworks >> PHP >> Test Frameworks `` and click on the `` + `` to add a new configuration and, if asked, select PHPUnit by Remote Interpreter.
 2. Select an interpreter from the list.
-3. If you would like to get code coverage find `` Path mappings `` and select the `` ... `` at the end of the line and in the new window ensure that you have again matched the local and remote paths as you did in `` Setting Up the PHP Interpreter ``
+3. If you would like to see phpunit's **code coverage reports** find `` Path mappings `` and select the `` ... `` at the end of the line and in the new window ensure that you have again matched the local and remote paths as you did in `` Setting Up the PHP Interpreter ``
   * A local Path of: ``C:\Users\JohnDoe\Code\Laravel`` should have a remote path of ``/mnt/c/Users/JohnDoe/Code/Laravel `` (note: the paths are case sensitive)
 4. In the PHPUnit Library section select use Composer library and choose the path to your projects remote vendor/autoload.php file (e.g. `` /mnt/c/Users/JohnDoe/Code/Laravel/vendor/autoload.php `` and click on the refresh button to validate the currently installed PHPUnit Version.
 5. In the Test Runner section check the box next to `` Default configuration file `` and click on the `` ... `` and enter the remote path to your projects phpunit.xml file (e.g. `` /mnt/c/Users/JohnDow/Code/Laravel/phpunit.xml ``)
