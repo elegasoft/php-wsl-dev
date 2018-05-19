@@ -10,7 +10,7 @@ The development environment runs on Ubuntu on Windows inside the Windows Subsyst
 
 For best results start with a fresh installation of Ubuntu 16.04 on Windows with a username of `` vagrant ``.  From a fresh installation of Ubuntu on Windows from the Windows Store run the following installation commands from the Ubuntu terminal.
 
-This installation script runs the Laravel Homestead provision script on your Ubuntu on Windows installation and applies several tweaks for use with Ubuntu on Windows.
+This installation script runs the [Laravel Homestead](https) provision script on your Ubuntu on Windows installation and applies several tweaks for use with Ubuntu on Windows.
 
 ```console
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
@@ -21,9 +21,9 @@ sudo bash provision.sh
 
 After about an hour of setting up you are all set to go.
 
-### Alias Configuration
+### Bash Alias Configuration
 
-If the installation does not successfully link the aliases which the rest of this guide may reference, please run the following commands in the Ubuntu on Windows shell.
+If the installation does not automatically link the aliases which are relied upon in the rest of this guide, please run the following commands in the Ubuntu on Windows shell.
 
 ```console
 rm /home/$USER/.bash_aliases
