@@ -114,7 +114,8 @@ PostgreSQL:
 The following will create a symlink to your Windows Hosts .ssh folder. If your usernames are not the same be sure to change them here.
 ```console
 sudo rm -rf /home/$USER/.ssh
-ln -s /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
+cp /mnt/c/Users/$USER/.ssh /home/$USER/.ssh
+sudo chmod 600 /home/$USER/.ssh/id_rsa
 ```
 
 ### Configure SSH Login ###
