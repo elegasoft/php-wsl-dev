@@ -153,13 +153,12 @@ SSH logon should be available immediately after installation, however, if you ar
 
 1. `` sudo apt purge openssh-server ``
 2. `` sudo apt install openssh-server ``
-3. `` sudo nano /etc/ssh/sshd_config `` 
-4. `` wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/settler/scripts/sshd_config" -O ->> /home/$USER/sshd_config ``
-5. `` echo "AllowUsers $USER" >> /home/$USER/sshd_config ``
-6. `` sudo rm /etc/ssh/sshd_config ``
-7. `` sudo mv /home/$USER/sshd_config /etc/ssh/sshd_config ``
-8. `` sudo service ssh --full-restart ``
-9. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
+3. `` wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/settler/scripts/sshd_config" -O ->> /home/$USER/sshd_config ``
+4. `` echo "AllowUsers $USER" >> /home/$USER/sshd_config ``
+5. `` sudo rm /etc/ssh/sshd_config ``
+6. `` sudo mv /home/$USER/sshd_config /etc/ssh/sshd_config ``
+7. `` sudo service ssh --full-restart ``
+8. Connect to your installation using favorite ssh client or in Git Bash you would `` ssh yourusername@127.0.0.1`` and enter the password
 
 Note: You will need to start the SSH Server after each login, alternatively, see [How to automatically start ssh server on boot on Windows Subsystem for Linux](https://gist.github.com/dentechy/de2be62b55cfd234681921d5a8b6be11) by dentechy for how to configure the SSH Server to start automatically with Windows.
 
