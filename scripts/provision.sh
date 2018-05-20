@@ -1,5 +1,4 @@
 wget "https://raw.githubusercontent.com/laravel/settler/master/scripts/provision.sh" -O ->> settler.sh
-mv settler.sh.1 settler.sh
 chmod +x settler.sh
 sudo bash settler.sh
 
