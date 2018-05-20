@@ -13,8 +13,7 @@ For best results start with a fresh installation of Ubuntu 16.04 on Windows with
 This installation script runs the [Laravel Homestead](https) provision script on your Ubuntu on Windows installation and applies several tweaks for use with Ubuntu on Windows.
 
 ```console
-wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" >> provision.sh
-mv provision.sh.1 provision.sh
+wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" -O ->> provision.sh
 chmod +x provision.sh
 sudo bash provision.sh
 ```
