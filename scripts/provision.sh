@@ -7,7 +7,7 @@ rm settler.sh
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/aliases" -O ->> /home/$USER/.bash_aliases
 source /home/$USER/.profile
 
-rm -rf ~/$USER/.ssh
+rm -rf ~/.ssh
 cp -R /mnt/c/Users/$USER/.ssh ~/.ssh
 sudo chmod 600 ~/.ssh/id_rsa
 
