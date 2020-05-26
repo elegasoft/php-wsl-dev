@@ -4,11 +4,11 @@
 
 This configures a PHP Ubuntu on Windows Development Environment providing you with a wonderful development environment without requiring you to manually install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! If something goes wrong, you can destroy and re-create the setup with a few simple commands!
 
-The development environment runs on Ubuntu on Windows inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.2, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
+The development environment runs on Ubuntu on Windows inside the Windows Subsystem for Linux and includes the Nginx web server, PHP 7.x, MySQL, Postgres, Redis, Memcached, Node, and all of the other goodies you need to develop amazing PHP, Laravel, Drupal, Wordpress, and/or Symfony applications.
 
 ## Installation
 
-For best results start with a fresh installation of Ubuntu 16.04 on Windows with a username of `` vagrant ``.  From a fresh installation of Ubuntu on Windows from the Windows Store run the following installation commands from the Ubuntu terminal.
+For best results start with a fresh installation of Ubuntu 20.04 on Windows with a username of `` vagrant ``.  From a fresh installation of Ubuntu on Windows from the Windows Store run the following installation commands from the Ubuntu terminal.
 
 This installation script runs the [Laravel Homestead](https) provision script on your Ubuntu on Windows installation and applies several tweaks for use with Ubuntu on Windows.
 
@@ -105,7 +105,19 @@ PostgreSQL:
 ### Changing the runtime version of PHP
 Run any of the following from the WSL command shell:
 
-* Reset to PHP 7.2 (default)
+* Reset to PHP 7.4 (default)
+
+```console
+php74
+```
+
+* Reset to PHP 7.3
+
+```console
+php73
+```
+
+* Reset to PHP 7.2
 
 ```console
 php72
