@@ -35,7 +35,7 @@ source /home/$USER/.profile
 Coding Languages:
 
 * Golang
-* PHP 7.2, 7.1, 7.0, and 5.6 (each are installed and switchable with via the command line)
+* PHP 7.4, 7.3, 7.2, 7.1, 7.0, and 5.6 (each are installed and switchable with via the command line)
 
 PHP Framework Support:
 * Laravel (installers for Laravel, Lumen, Envoy and Spark, plus the Chrome Driver for Laravel Dusk)
@@ -197,7 +197,7 @@ Please ensure you have already configured a as noted above
 3. Enter the following in the configuration:
   *  Choose Deployment configuration from the radio select list.
   *  Select the Deloyment Server you configured in the *Configuring a Deployment Server* section.
-  *  In the following General section, enter `` /usr/bin/php7.2 ``, `` /usr/bin/php7.1 ``, `` /usr/bin/php7.0 ``, or `` /usr/bin/php5.6 `` as the path to the PHP executable, then click on the refresh button to validate the path and ensure that you receive a success message.
+  *  In the following General section, enter `` /usr/bin/php7.4 ``, `` /usr/bin/php7.3 ``, `` /usr/bin/php7.2 ``, `` /usr/bin/php7.1 ``, `` /usr/bin/php7.0 ``, or `` /usr/bin/php5.6 `` as the path to the PHP executable, then click on the refresh button to validate the path and ensure that you receive a success message.
 Note: It is recommended that repeat this process for all 4 versions of the availble PHP interpreters now.
   *  Click Apply and then select OK to close the window.
 4. Configuring the Path Mappings (this is done a project level basis and required for PHPUnit to run successfully)
