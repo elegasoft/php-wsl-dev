@@ -10,11 +10,16 @@ The development environment runs on Ubuntu on Windows inside the Windows Subsyst
 
 For best results start with a fresh installation of Ubuntu 20.04 on Windows with a username of `` vagrant ``.  From a fresh installation of Ubuntu on Windows from the Windows Store run the following installation commands from the Ubuntu terminal.
 
+``` console
+sudo adduser vagrant
+### the default password should also be 'vagrant'
+```
+
 This installation script runs the [Laravel Homestead](https) provision script on your Ubuntu on Windows installation and applies several tweaks for use with Ubuntu on Windows.
 
 ```console
 wget "https://raw.githubusercontent.com/elegasoft/php-wsl-dev/master/scripts/provision.sh" -O ->> provision.sh
-chmod +x provision.sh
+sudo chmod +x provision.sh
 sudo bash provision.sh
 ```
 
