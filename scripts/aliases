@@ -11,6 +11,7 @@ alias serve=serve-laravel
 
 alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
+alias start-services='sudo service mysql start && sudo service redis-server start && ssh-restart'
 
 function artisan() {
     php artisan "$@"
