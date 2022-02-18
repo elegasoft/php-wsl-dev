@@ -52,6 +52,14 @@ function php74() {
     sudo update-alternatives --set php /usr/bin/php7.4
 }
 
+function php80() {
+    sudo update-alternatives --set php /usr/bin/php8.0
+}
+
+function php81() {
+    sudo update-alternatives --set php /usr/bin/php8.1
+}
+
 function ssh-restart(){
     sudo service ssh --full-restart
 }
