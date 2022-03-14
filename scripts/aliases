@@ -1,6 +1,7 @@
 alias ..="cd .."
 alias ...="cd ../.."
 
+alias ds="sudo du -sh ./* | sort -h"
 alias h='cd ~'
 alias c='clear'
 alias art=artisan
@@ -9,6 +10,7 @@ alias tinker='art tinker'
 alias phpspec='vendor/bin/phpspec'
 alias phpunit='vendor/bin/phpunit'
 alias sail='vendor/bin/sail'
+
 
 alias serve=serve-laravel
 
